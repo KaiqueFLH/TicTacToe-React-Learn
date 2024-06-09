@@ -22,11 +22,17 @@ export default function Tictactoe() {
       setPlayer(player === "X" ? "O" : "X");
       if (checkWinner()) {
         setHasWinner(true);
-        if (player == "X") {
-          setCont1(cont1 + 1);
-        } else {
-          setCont2(cont2 + 1);
-        }
+        setTimeout(() => {
+          if (player == "X") {
+            setPlayer("O");
+            setCont1(cont1 + 1);
+            alert("O Jogador X GANHOU!");
+          } else {
+            setPlayer("X");
+            alert("O Jogador O GANHOU!");
+            setCont2(cont2 + 1);
+          }
+        }, 100);
       }
     }
     console.log(row);
@@ -40,7 +46,6 @@ export default function Tictactoe() {
     ]);
 
     setHasWinner(false);
-    setPlayer("X");
   };
 
   let checkWinner = () => {
